@@ -4,7 +4,6 @@ const User = require('../models/user');
 
 const register = (req, res, next) => {
   const { email, name } = req.body;
-
   User.findOne({ email, name })
     .then((user) => {
       if (!user) {
@@ -20,7 +19,6 @@ const register = (req, res, next) => {
             _id: userData._id,
             email: userData.email,
           }))
-
           .catch(next);
       }
       throw new SameEmailError('Пользователь с таким email уже существует');

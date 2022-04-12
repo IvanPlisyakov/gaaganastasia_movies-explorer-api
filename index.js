@@ -13,15 +13,17 @@ require('dotenv').config();
 
 const app = express();
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 const startMongo = async () => {
-  await mongoose.connect('mongodb+srv://gaaganastasia:Mbspchnu@ndthwm.ylfhy.mongodb.net/bitfilmsdb?retryWrites=true&w=majority', {
+  await mongoose.connect('mongodb+srv://ndthwm:Mbspchnu@cluster-mesto.vxrll.mongodb.net/movies?retryWrites=true&w=majority', { // mongodb+srv://gaaganastasia:Mbspchnu@ndthwm.ylfhy.mongodb.net/bitfilmsdb?retryWrites=true&w=majority
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  });
+    // useCreateIndex: true,
+    // useFindAndModify: false,
+  })
+    .then(() => console.log('mongo connected'))
+    .catch((err) => console.log(err));
 };
 startMongo();
 
